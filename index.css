@@ -1185,7 +1185,8 @@ section.visible {
   border-radius: 16px;
   padding: 30px;
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Allow absolute SVG tooltips or lines to bleed beautifully if needed */
+  overflow-x: auto;  /* Prevent horizontal squishing on extremely small laptop screens by introducing elegant scrolling */
   box-shadow: 0 15px 35px rgba(0,0,0,0.7);
 }
 
@@ -1204,6 +1205,7 @@ section.visible {
   position: relative;
   min-height: 260px;
   z-index: 2;
+  min-width: 820px; /* Enforce stable horizontal geometry so connecting lines and cards never clump or cross-overlap */
 }
 
 .matcher-column {
@@ -1211,17 +1213,19 @@ section.visible {
   flex-direction: column;
   justify-content: space-around;
   gap: 20px;
-  width: 42%;
+  width: 46%;      /* Expanded from 42% to 46% for maximum spatial breathing room */
+  min-width: 380px; /* Rigorous minimum width boundary to completely prevent compressed L-line wrapping or squeezing */
+  flex-shrink: 0;
 }
 
 .matcher-item {
   background: rgba(255,255,255,0.02);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 8px;
-  padding: 12px 18px;
+  padding: 14px 20px; /* Expanded padding from 12px 18px for highly refined professional grid padding */
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 18px;          /* Expanded gap from 15px to 18px to eliminate dense textual cramping */
   user-select: none;
   position: relative;
   transition: all 0.3s;
@@ -1247,6 +1251,7 @@ section.visible {
   height: 40px;
   border-radius: 4px;
   object-fit: cover;
+  flex-shrink: 0; /* Enforce zero image distortion under any responsive flexing scenarios */
 }
 
 .matcher-item-text {
