@@ -1192,7 +1192,8 @@ section.visible {
 
 .matcher-instruction {
   font-family: var(--font-retro);
-  font-size: 8px;
+  font-size: 13px;      /* Significantly bumped from 8px for clear legibility */
+  line-height: 1.6;     /* Added line-height to ensure text wraps beautifully */
   color: var(--pink);
   text-align: center;
   margin-bottom: 25px;

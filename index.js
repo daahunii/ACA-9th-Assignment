@@ -458,7 +458,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const matcherTitle = document.querySelector(".matcher-instruction");
       matcherTitle.textContent = "🏆 축하합니다! 모든 감정이 초시공간을 넘어 유기적으로 연결되었습니다!";
       matcherTitle.style.color = "var(--yellow)";
-      matcherTitle.style.fontSize = "10px";
+      matcherTitle.style.fontSize = "13px";
       
       // Play game completion retro fanfare
       setTimeout(() => playBleep(523.25, "square", 0.1), 100); // C5
