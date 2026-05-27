@@ -1205,7 +1205,7 @@ section.visible {
   position: relative;
   min-height: 260px;
   z-index: 2;
-  min-width: 820px; /* Enforce stable horizontal geometry so connecting lines and cards never clump or cross-overlap */
+  min-width: 700px; /* Slimmed down from 820px to be more compact yet preserve connection geometry */
 }
 
 .matcher-column {
@@ -1213,8 +1213,8 @@ section.visible {
   flex-direction: column;
   justify-content: space-around;
   gap: 20px;
-  width: 46%;      /* Expanded from 42% to 46% for maximum spatial breathing room */
-  min-width: 380px; /* Rigorous minimum width boundary to completely prevent compressed L-line wrapping or squeezing */
+  width: 46%;      
+  min-width: 330px; /* Slimmed down from 380px to prevent wrapping while saving desktop horizontal layout space */
   flex-shrink: 0;
 }
 
@@ -1413,9 +1413,21 @@ section.visible {
   box-shadow: 0 30px 60px rgba(0,0,0,0.7), 0 0 25px rgba(52, 168, 83, 0.2);
   border-color: rgba(52, 168, 83, 0.6);
 }
+#section-yeram .section-wrapper-grid {
+  align-items: stretch; /* Force both cards in the row to stretch and align to equal heights */
+}
+
 #section-yeram .interactive-matcher-wrapper {
   border-color: rgba(52, 168, 83, 0.15);
+  display: flex;
+  flex-direction: column;
+  height: 100%;           /* Scale height to fill the grid cell completely */
 }
+
+#section-yeram .matcher-board {
+  flex: 1;                /* Occupy remaining vertical space dynamically */
+}
+
 #section-yeram .matcher-instruction {
   color: var(--google-green);
 }
