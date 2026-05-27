@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Arts & Culture Stamp Adventure</title>
+  <meta name="description" content="AI와 문화예술 과제 9주차 - 구글 아트 앤 컬처 탐험 여정을 떠나는 레트로 아케이드 단체 프로젝트">
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+  <!-- Scanlines & Vignette Retro Effects -->
+  <div class="crt-overlay"></div>
+  <div class="crt-vignette"></div>
+
+  <!-- Hero Opening Screen -->
+  <header id="hero">
+    <div class="starfield"></div>
+    <div class="hero-console">
+      <div class="console-body">
+        <div class="console-lid">
+          <!-- Outer lid, shown when closed -->
+          <div class="console-lid-outer">
+            <div class="lid-loading-container">
+              <div class="outer-loading-text">BOOTING SYSTEM...</div>
+              <div class="outer-loading-bar-container">
+                <div class="outer-loading-bar"></div>
+              </div>
+            </div>
+            <button class="outer-open-btn" style="display: none;">TAP TO OPEN</button>
+          </div>
+          <!-- Inner lid, shown when opened -->
+          <div class="console-lid-inner">
+            <div class="screen-top">
+              <div class="screen-glow"></div>
+              <!-- The top screen displays the main gorgeous title screen after opening -->
+              <div class="title-screen-content" style="display: none; text-align: center; animation: stamp-pop 0.8s ease;">
+                <h1 style="font-family: var(--font-retro); font-size: 16px; color: var(--pink); text-shadow: 0 0 10px rgba(255,0,127,0.8); margin-bottom: 12px; letter-spacing: 1px;">ARTS & CULTURE</h1>
+                <h2 style="font-family: var(--font-retro); font-size: 10px; color: var(--cyan); text-shadow: 0 0 8px rgba(0,240,255,0.8); margin-bottom: 20px;">STAMP ADVENTURE</h2>
+                <span style="font-size: 8px; color: rgba(255,255,255,0.5); font-family: var(--font-retro); animation: blink 1s infinite;">SCROLL DOWN TO EXPLORE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="console-bottom-screen">
+          <div class="screen-glow"></div>
+          <div class="bottom-screen-content" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; width: 100%; padding: 15px; z-index: 5;">
+            <div class="bottom-welcome-text" style="display: none; font-family: var(--font-retro); font-size: 7px; color: var(--cyan); text-shadow: 0 0 5px rgba(0,240,255,0.5); line-height: 1.6; text-align: center;">
+              🎮 SYSTEM ACTIVE 🎮<br><br>
+              STAMP ADVENTURE IS ONLINE!<br>
+              SCROLL DOWN TO VIEW TRAINERS!
+            </div>
+          </div>
+        </div>
+        <!-- Transparent interactive overlays on top of the physical 3DS buttons -->
+        <div class="d-pad" title="D-Pad"></div>
+        <div class="action-buttons">
+          <div class="action-btn x" title="Button X">X</div>
+          <div class="action-btn y" title="Button Y">Y</div>
+          <div class="action-btn a" title="Button A">A</div>
+          <div class="action-btn b" title="Button B">B</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Invite Indicator -->
+    <div class="scroll-indicator">
+      <span>SCROLL DOWN TO EXPLORE</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- SECTION 0: Team Stamp Collection Overview -->
+    <section id="section-stamps-overview">
+      <div class="section-header">
+        <span class="section-tag">STAMP CASE</span>
+        <h2 class="section-title">팀 스탬프 수집 현황</h2>
+        <p class="stamp-overview-subtitle">구글 아트 앤 컬처에서 수집 가능한 총 13종의 스탬프 현황입니다. 각 뱃지에 마우스를 올려보세요!</p>
+      </div>
+
+      <!-- Stamp Case with single image + hover zones -->
+      <div class="stamp-case-wrapper">
+        <div class="stamp-case-tray">
+          <!-- The single overview image -->
+          <img class="stamp-case-bg" src="./assets/stamps/total_collection.png" alt="팀 스탬프 수집 현황">
+
+          <!-- Transparent hover zones precisely positioned over each badge in the image -->
+          <!-- Row 1: 4 stamps (Art Inspector, Adventurer, Art Collector, Know it all) -->
+          <!-- Transparent hover zones precisely positioned over each badge in the image -->
+          <!-- Row 1: 4 stamps (Art Inspector, Adventurer, Art Collector, Know it all) -->
+          <div class="stamp-hover-zone" style="left: 17.321%; top: 11.837%; width: 12.933%; height: 22.857%;">
+            <div class="stamp-tooltip stamp-tooltip-right">
+              <span class="stamp-tooltip-num">#01</span>
+              <strong>예술작품 조사관 (Art Inspector)</strong>
+              <p>작품의 세밀한 디테일과 기법을 고해상도 줌으로 면밀히 분석하며 감상할 때 획득하는 스탬프</p>
+              <div class="stamp-tooltip-collectors">
+                <span class="collector dahun">정다훈 ✓</span>
+                <span class="collector hyun">이현 ✓</span>
+                <span class="collector yeram">서예람 ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stamp-hover-zone" style="left: 34.873%; top: 11.837%; width: 12.933%; height: 22.857%;">
+            <div class="stamp-tooltip">
+              <span class="stamp-tooltip-num">#02</span>
+              <strong>모험가 (Adventurer)</strong>
+              <p>스트리트 뷰를 활용해 새로운 목적지로 여행하며 세계의 문화유산을 탐험할 때 획득하는 스탬프</p>
+              <div class="stamp-tooltip-collectors">
+                <span class="collector dahun">정다훈 ✓</span>
+                <span class="collector hyun">이현 ✓</span>
+                <span class="collector yeram">서예람 ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stamp-hover-zone" style="left: 52.425%; top: 11.837%; width: 12.933%; height: 22.857%;">
+            <div class="stamp-tooltip">
+              <span class="stamp-tooltip-num">#03</span>
+              <strong>예술작품 수집가 (Art Collector)</strong>
+              <p>마음에 드는 예술 작품을 즐겨찾기에 추가하며 나만의 컬렉션을 구축할 때 획득하는 스탬프</p>
+              <div class="stamp-tooltip-collectors">
+                <span class="collector dahun">정다훈 ✓</span>
+                <span class="collector hyun">이현 ✓</span>
+                <span class="collector yeram">서예람 ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stamp-hover-zone" style="left: 69.977%; top: 11.837%; width: 12.933%; height: 22.857%;">
+            <div class="stamp-tooltip stamp-tooltip-left">
+              <span class="stamp-tooltip-num">#04</span>
+              <strong>척척박사 (Know it all)</strong>
+              <p>퀴즈 문제에 정확히 답변하며 예술에 대한 박식함을 증명할 때 획득하는 스탬프</p>
+              <div class="stamp-tooltip-collectors">
+                <span class="collector dahun">정다훈 ✓</span>
+                <span class="collector hyun">이현 ✓</span>
+                <span class="collector yeram missing">서예람 ✗</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2: 5 stamps (Museum Explorer, Connections Explorer, Bookworm, Image Enthusiast, Curator) -->
+          <div class="stamp-hover-zone" style="left: 8.545%; top: 38.776%; width: 12.933%; height: 22.857%;">
+            <div class="stamp-tooltip stamp-tooltip-right">
+              <span class="stamp-tooltip-num">#05</span>
+              <strong>박물관 탐험가 (Museum Explorer)</strong>
+              <p>박물관 컬렉션 페이지를 탐색하며 실제 박물관을 온라인에서 체험할 때 획득하는 스탬프</p>
+              <div class="stamp-tooltip-collectors">
+                <span class="collector missing">정다훈 ✗</span>
+                <span class="collector missing">이현 ✗</span>
+                <span class="collector missing">서예람 ✗</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stamp-hover-zone" style="left: 26.097%; top: 38.776%; width: 12.933%; height: 22.857%;">
+            <div class="stamp-tooltip stamp-tooltip-right">
+              <span class="stamp-tooltip-num">#06</span>
+              <strong>연결 탐험가 (Connections Explorer)</strong>
+              <p>연결 심볼을 활용해 작품들 사이의 숨겨진 맥락과 흐름을 탐색할 때 획득하는 스탬프</p>
+              <div class="stamp-tooltip-collectors">
+                <span class="collector dahun">정다훈 ✓</span>
+                <span class="collector hyun">이현 ✓</span>
+                <span class="collector yeram missing">서예람 ✗</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stamp-hover-zone" style="left: 43.649%; top: 38.776%; width: 12.933%; height: 22.857%;">
+            <div class="stamp-tooltip">
+              <span class="stamp-tooltip-num">#07</span>
+              <strong>책벌레 (Bookworm)</strong>
+              <p>몰입형 스토리(최소 5슬라이드 이상)를 끝까지 읽으며 예술의 서사를 체험할 때 획득하는 스탬프</p>
+              <div class="stamp-tooltip-collectors">
+                <span class="collector dahun">정다훈 ✓</span>
+                <span class="collector hyun">이현 ✓</span>
+                <span class="collector yeram">서예람 ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stamp-hover-zone" style="left: 61.201%; top: 38.776%; width: 12.933%; height: 22.857%;">
+            <div class="stamp-tooltip stamp-tooltip-left">
+              <span class="stamp-tooltip-num">#08</span>
+              <strong>이미지 애호가 (Image Enthusiast)</strong>
+              <p>하나의 이미지를 깊이 있게 시간을 들여 감상하며 작품에 몰입할 때 획득하는 스탬프</p>
+              <div class="stamp-tooltip-collectors">
+                <span class="collector dahun">정다훈 ✓</span>
+                <span class="collector hyun">이현 ✓</span>
+                <span class="collector yeram">서예람 ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stamp-hover-zone" style="left: 78.753%; top: 38.776%; width: 12.933%; height: 22.857%;">
+            <div class="stamp-tooltip stamp-tooltip-left">
+              <span class="stamp-tooltip-num">#09</span>
+              <strong>큐레이터 (Curator)</strong>
+              <p>예술 작품과 이미지를 활용해 나만의 사용자 갤러리를 직접 만들 때 획득하는 스탬프</p>
+              <div class="stamp-tooltip-collectors">
+                <span class="collector dahun">정다훈 ✓</span>
+                <span class="collector hyun missing">이현 ✗</span>
+                <span class="collector yeram missing">서예람 ✗</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 3: 4 stamps (Culture Seeker, Chromecast, Color Explorer, Time Explorer) -->
+          <div class="stamp-hover-zone" style="left: 17.321%; top: 65.306%; width: 12.933%; height: 22.857%;">
+            <div class="stamp-tooltip stamp-tooltip-top stamp-tooltip-right">
+              <span class="stamp-tooltip-num">#10</span>
+              <strong>문화 탐색가 (Culture Seeker)</strong>
+              <p>검색바를 활용해 새로운 주제를 탐색하며 다양한 문화를 넓게 발견할 때 획득하는 스탬프</p>
+              <div class="stamp-tooltip-collectors">
+                <span class="collector dahun">정다훈 ✓</span>
+                <span class="collector hyun">이현 ✓</span>
+                <span class="collector yeram">서예람 ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stamp-hover-zone" style="left: 34.873%; top: 65.306%; width: 12.933%; height: 22.857%;">
+            <div class="stamp-tooltip stamp-tooltip-top">
+              <span class="stamp-tooltip-num">#11</span>
+              <strong>크롬캐스트 (Chromecast)</strong>
+              <p>크롬캐스트를 사용해 예술 작품을 TV 화면에 전시하며 감상할 때 획득하는 스탬프</p>
+              <div class="stamp-tooltip-collectors">
+                <span class="collector dahun">정다훈 ✓</span>
+                <span class="collector hyun missing">이현 ✗</span>
+                <span class="collector yeram missing">서예람 ✗</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stamp-hover-zone" style="left: 52.425%; top: 65.306%; width: 12.933%; height: 22.857%;">
+            <div class="stamp-tooltip stamp-tooltip-top">
+              <span class="stamp-tooltip-num">#12</span>
+              <strong>색상 탐색기 (Color Explorer)</strong>
+              <p>색상 탐색기를 활용해 명화를 컬러 스펙트럼별로 탐색하며 색채의 언어를 체험할 때 획득하는 스탬프</p>
+              <div class="stamp-tooltip-collectors">
+                <span class="collector dahun">정다훈 ✓</span>
+                <span class="collector hyun">이현 ✓</span>
+                <span class="collector yeram">서예람 ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stamp-hover-zone" style="left: 69.977%; top: 65.306%; width: 12.933%; height: 22.857%;">
+            <div class="stamp-tooltip stamp-tooltip-top stamp-tooltip-left">
+              <span class="stamp-tooltip-num">#13</span>
+              <strong>시간 탐색기 (Time Explorer)</strong>
+              <p>시간 탐색기를 활용해 연도 슬라이더를 조작하며 시대별 미술의 흐름을 탐험할 때 획득하는 스탬프</p>
+              <div class="stamp-tooltip-collectors">
+                <span class="collector dahun">정다훈 ✓</span>
+                <span class="collector hyun">이현 ✓</span>
+                <span class="collector yeram">서예람 ✓</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /stamp-case-tray -->
+
+        <!-- Collection Summary Stats -->
+        <div class="stamp-stats-row">
+          <div class="stamp-stat-card dahun-stat">
+            <span class="stat-trainer-name">정다훈</span>
+            <div class="stat-bar-wrapper">
+              <div class="stat-bar-fill" style="width: 92.3%;"></div>
+            </div>
+            <span class="stat-count">12 / 13</span>
+          </div>
+          <div class="stamp-stat-card hyun-stat">
+            <span class="stat-trainer-name">이현</span>
+            <div class="stat-bar-wrapper">
+              <div class="stat-bar-fill" style="width: 76.9%;"></div>
+            </div>
+            <span class="stat-count">10 / 13</span>
+          </div>
+          <div class="stamp-stat-card yeram-stat">
+            <span class="stat-trainer-name">서예람</span>
+            <div class="stat-bar-wrapper">
+              <div class="stat-bar-fill" style="width: 61.5%;"></div>
+            </div>
+            <span class="stat-count">8 / 13</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 1: Trainer Cards -->
+    <section id="section-trainers">
+      <div class="section-header">
+        <span class="section-tag">CHAPTER 01</span>
+        <h2 class="section-title">스탬프 어드벤처 트레이너 카드</h2>
+      </div>
+
+      <div class="trainers-grid">
+        <!-- DAHUN'S CARD (12 Stamps Collected) -->
+        <div class="trainer-card-wrapper dahun">
+          <div class="trainer-card">
+            <div class="trainer-front">
+              <div class="trainer-header">
+                <span class="trainer-id">NO. 22100661</span>
+                <span class="trainer-tag">DAHUN</span>
+              </div>
+              <div class="trainer-profile">
+                <div class="trainer-avatar-frame">
+                  <img class="trainer-avatar" src="./assets/dahun_dot.png" alt="정다훈">
+                </div>
+                <div class="trainer-info">
+                  <h3 class="trainer-name">정다훈</h3>
+                  <span class="trainer-role">시간의 항해자</span>
+                </div>
+              </div>
+              <div class="trainer-stats">
+                <div class="stat-row"><span class="stat-label">획득 스탬프</span><span class="stat-value">12 / 13</span></div>
+                <div class="stat-row"><span class="stat-label">주요 탐색 도구</span><span class="stat-value">연도 슬라이더</span></div>
+                <div class="stat-row"><span class="stat-label">주력 탐색 분야</span><span class="stat-value">역사적 연대기 미술</span></div>
+              </div>
+              <span style="font-family: var(--font-retro); font-size: 7px; color: rgba(255,255,255,0.25); text-align: center; margin-top: auto;">HOVER TO FLIP</span>
+            </div>
+            <div class="trainer-back">
+              <h4 class="trainer-back-title">수집 스탬프 케이스 (12/13)</h4>
+              <div class="stamps-grid">
+                <!-- 1. 시간 탐색기 -->
+                <div class="stamp-slot"><img src="./assets/stamps/time_explorer_dot.png" alt="시간 탐색기"></div>
+                <!-- 2. 색상 탐색기 -->
+                <div class="stamp-slot"><img src="./assets/stamps/color_explorer_dot.png" alt="색상 탐색기"></div>
+                <!-- 3. 책벌레 -->
+                <div class="stamp-slot"><img src="./assets/stamps/bookworm_dot.png" alt="책벌레"></div>
+                <!-- 4. 모험가 -->
+                <div class="stamp-slot"><img src="./assets/stamps/explorer_dot.png" alt="모험가"></div>
+                <!-- 5. 척척박사 -->
+                <div class="stamp-slot"><img src="./assets/stamps/scholar_dot.png" alt="척척박사"></div>
+                <!-- 6. 예술작품 조사관 -->
+                <div class="stamp-slot"><img src="./assets/stamps/artwork_inspector_dot.png" alt="예술작품 조사관"></div>
+                <!-- 7. 예술작품 수집가 -->
+                <div class="stamp-slot"><img src="./assets/stamps/artwork_collector_dot.png" alt="예술작품 수집가"></div>
+                <!-- 8. 박물관 탐험가 (미수집) -->
+                <div class="stamp-slot"></div>
+                <!-- 9. 연결 탐험가 -->
+                <div class="stamp-slot"><img src="./assets/stamps/link_explorer_dot.png" alt="연결 탐험가"></div>
+                <!-- 10. 문화 탐색가 -->
+                <div class="stamp-slot"><img src="./assets/stamps/culture_explorer_dot.png" alt="문화 탐색가"></div>
+                <!-- 11. 큐레이터 -->
+                <div class="stamp-slot"><img src="./assets/stamps/curator_dot.png" alt="큐레이터"></div>
+                <!-- 12. Chromecast -->
+                <div class="stamp-slot"><img src="./assets/stamps/chromecast.png" alt="Chromecast"></div>
+                <!-- 13. 이미지 애호가 -->
+                <div class="stamp-slot"><img src="./assets/stamps/image_lover_dot.png" alt="이미지 애호가"></div>
+              </div>
+              <div class="picked-stamp-summary">
+                <span>FAVORITE STAMP</span>
+                <p><strong>시간 탐색기</strong>: 동적으로 변하는 시간 축(연도 슬라이더) 조작을 통해 단편적인 명화 감상을 넘어 시대별 미적 진화를 유기적으로 포착하는 쾌감을 선사합니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HYUN'S CARD (10 Stamps Collected) -->
+        <div class="trainer-card-wrapper hyun">
+          <div class="trainer-card">
+            <div class="trainer-front">
+              <div class="trainer-header">
+                <span class="trainer-id">NO. 22408619</span>
+                <span class="trainer-tag">HYUN</span>
+              </div>
+              <div class="trainer-profile">
+                <div class="trainer-avatar-frame">
+                  <img class="trainer-avatar" src="./assets/hyun_dot.png" alt="이현">
+                </div>
+                <div class="trainer-info">
+                  <h3 class="trainer-name">이현</h3>
+                  <span class="trainer-role">색채의 지휘자</span>
+                </div>
+              </div>
+              <div class="trainer-stats">
+                <div class="stat-row"><span class="stat-label">획득 스탬프</span><span class="stat-value">10 / 13</span></div>
+                <div class="stat-row"><span class="stat-label">주요 탐색 도구</span><span class="stat-value">색상 탐색기</span></div>
+                <div class="stat-row"><span class="stat-label">주력 탐색 분야</span><span class="stat-value">다채로운 비주얼 컬러</span></div>
+              </div>
+              <span style="font-family: var(--font-retro); font-size: 7px; color: rgba(255,255,255,0.25); text-align: center; margin-top: auto;">HOVER TO FLIP</span>
+            </div>
+            <div class="trainer-back">
+              <h4 class="trainer-back-title">수집 스탬프 케이스 (10/13)</h4>
+              <div class="stamps-grid">
+                <!-- 1. 시간 탐색기 -->
+                <div class="stamp-slot"><img src="./assets/stamps/time_explorer_dot.png" alt="시간 탐색기"></div>
+                <!-- 2. 색상 탐색기 -->
+                <div class="stamp-slot"><img src="./assets/stamps/color_explorer_dot.png" alt="색상 탐색기"></div>
+                <!-- 3. 책벌레 -->
+                <div class="stamp-slot"><img src="./assets/stamps/bookworm_dot.png" alt="책벌레"></div>
+                <!-- 4. 모험가 -->
+                <div class="stamp-slot"><img src="./assets/stamps/explorer_dot.png" alt="모험가"></div>
+                <!-- 5. 척척박사 -->
+                <div class="stamp-slot"><img src="./assets/stamps/scholar_dot.png" alt="척척박사"></div>
+                <!-- 6. 예술작품 조사관 -->
+                <div class="stamp-slot"><img src="./assets/stamps/artwork_inspector_dot.png" alt="예술작품 조사관"></div>
+                <!-- 7. 예술작품 수집가 -->
+                <div class="stamp-slot"><img src="./assets/stamps/artwork_collector_dot.png" alt="예술작품 수집가"></div>
+                <!-- 8. 박물관 탐험가 (미수집) -->
+                <div class="stamp-slot"></div>
+                <!-- 9. 연결 탐험가 -->
+                <div class="stamp-slot"><img src="./assets/stamps/link_explorer_dot.png" alt="연결 탐험가"></div>
+                <!-- 10. 문화 탐색가 -->
+                <div class="stamp-slot"><img src="./assets/stamps/culture_explorer_dot.png" alt="문화 탐색가"></div>
+                <!-- 11. 큐레이터 (미수집) -->
+                <div class="stamp-slot"></div>
+                <!-- 12. Chromecast (미수집) -->
+                <div class="stamp-slot"></div>
+                <!-- 13. 이미지 애호가 -->
+                <div class="stamp-slot"><img src="./assets/stamps/image_lover_dot.png" alt="이미지 애호가"></div>
+              </div>
+              <div class="picked-stamp-summary">
+                <span>FAVORITE STAMP</span>
+                <p><strong>색상 탐색기</strong>: 미술품을 색상별로 질서 정연하게 묶어 감상할 수 있는 직관적 단순함이 매력적입니다. 다양한 화풍을 발산 탐색하는 신선함을 줍니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- YERAM'S CARD (8 Stamps Collected) -->
+        <div class="trainer-card-wrapper yeram">
+          <div class="trainer-card">
+            <div class="trainer-front">
+              <div class="trainer-header">
+                <span class="trainer-id">NO. 22400345</span>
+                <span class="trainer-tag">YERAM</span>
+              </div>
+              <div class="trainer-profile">
+                <div class="trainer-avatar-frame">
+                  <img class="trainer-avatar" src="./assets/yeram_dot.png" alt="서예람">
+                </div>
+                <div class="trainer-info">
+                  <h3 class="trainer-name">서예람</h3>
+                  <span class="trainer-role">감성 스토리 가이드</span>
+                </div>
+              </div>
+              <div class="trainer-stats">
+                <div class="stat-row"><span class="stat-label">획득 스탬프</span><span class="stat-value">8 / 13</span></div>
+                <div class="stat-row"><span class="stat-label">주요 탐색 도구</span><span class="stat-value">스토리텔링 북</span></div>
+                <div class="stat-row"><span class="stat-label">주력 탐색 분야</span><span class="stat-value">글로벌 문화 역사 서사</span></div>
+              </div>
+              <span style="font-family: var(--font-retro); font-size: 7px; color: rgba(255,255,255,0.25); text-align: center; margin-top: auto;">HOVER TO FLIP</span>
+            </div>
+            <div class="trainer-back">
+              <h4 class="trainer-back-title">수집 스탬프 케이스 (8/13)</h4>
+              <div class="stamps-grid">
+                <!-- 1. 시간 탐색기 -->
+                <div class="stamp-slot"><img src="./assets/stamps/time_explorer_dot.png" alt="시간 탐색기"></div>
+                <!-- 2. 색상 탐색기 -->
+                <div class="stamp-slot"><img src="./assets/stamps/color_explorer_dot.png" alt="색상 탐색기"></div>
+                <!-- 3. 책벌레 -->
+                <div class="stamp-slot"><img src="./assets/stamps/bookworm_dot.png" alt="책벌레"></div>
+                <!-- 4. 모험가 -->
+                <div class="stamp-slot"><img src="./assets/stamps/explorer_dot.png" alt="모험가"></div>
+                <!-- 5. 척척박사 (미수집) -->
+                <div class="stamp-slot"></div>
+                <!-- 6. 예술작품 조사관 -->
+                <div class="stamp-slot"><img src="./assets/stamps/artwork_inspector_dot.png" alt="예술작품 조사관"></div>
+                <!-- 7. 예술작품 수집가 -->
+                <div class="stamp-slot"><img src="./assets/stamps/artwork_collector_dot.png" alt="예술작품 수집가"></div>
+                <!-- 8. 박물관 탐험가 (미수집) -->
+                <div class="stamp-slot"></div>
+                <!-- 9. 연결 탐험가 (미수집) -->
+                <div class="stamp-slot"></div>
+                <!-- 10. 문화 탐색가 -->
+                <div class="stamp-slot"><img src="./assets/stamps/culture_explorer_dot.png" alt="문화 탐색가"></div>
+                <!-- 11. 큐레이터 (미수집) -->
+                <div class="stamp-slot"></div>
+                <!-- 12. Chromecast (미수집) -->
+                <div class="stamp-slot"></div>
+                <!-- 13. 이미지 애호가 -->
+                <div class="stamp-slot"><img src="./assets/stamps/image_lover_dot.png" alt="이미지 애호가"></div>
+              </div>
+              <div class="picked-stamp-summary">
+                <span>FAVORITE STAMP</span>
+                <p><strong>책벌레</strong>: 어려운 예술 공부가 아니라, 한 편의 동화 같은 이야기를 여행하듯 탐험하며 풍요로운 지식과 태도를 즐겁게 자연스럽게 체득하게 돕습니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Dahun's Chapter -->
+    <section id="section-dahun">
+      <div class="section-header">
+        <span class="section-tag">CHAPTER 02</span>
+        <h2 class="section-title">정다훈의 모험 : 시공간과 한국 미학</h2>
+      </div>
+
+      <div class="section-wrapper-grid">
+        <div class="pixel-box">
+          <div class="pixel-title">TIME SLIDER SIMULATION</div>
+          <p class="chapter-desc">
+            정다훈 트레이너는 수동적인 정보 속에서 명확한 <strong>'시간적 이정표'</strong>를 제시해 준 <strong>'시간 탐색기 스탬프'</strong>에 크게 매료되었습니다.
+            직접 조작이 가능한 <strong>'연도 슬라이더'</strong>를 움직임에 따라 시대적 배경 아래 수많은 명화들이 빛과 색의 집착을 어떻게 진화해 나갔는지 시각적으로 직접 목격할 수 있습니다.
+          </p>
+
+          <!-- Interactive Time Slider Morphing Grid -->
+          <div class="time-slider-demo">
+            <div class="painting-morph-container">
+              <img class="morph-painting p1" src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800&auto=format&fit=crop" alt="Renaissance Botticelli">
+              <img class="morph-painting p2" src="https://images.unsplash.com/photo-1579783928621-7a13d66a62d1?w=800&auto=format&fit=crop" alt="Impressionism Monet">
+              <div class="morph-title-overlay">
+                <span class="painting-era">RENAISSANCE - 르네상스 시기 (1500년대)</span>
+                <span class="painting-name">보티첼리 - 비너스의 탄생 (빛과 선의 대칭 조화)</span>
+              </div>
+            </div>
+            <div class="slider-controls">
+              <div class="timeline-slider-label">
+                <span>1500 (Renaissance)</span>
+                <span>1890 (Impressionism)</span>
+              </div>
+              <input type="range" class="custom-range-slider" min="0" max="100" value="0">
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Rotate Badge Card -->
+        <div class="badge-3d-showcase">
+          <div class="badge-3d-card">
+            <div class="badge-3d-container">
+              <img class="korean-art-badge-img" src="./assets/dahun_proposal.png?v=3" alt="한국 예술의 이해자 배지">
+            </div>
+            <h3 class="badge-info-name">한국 예술의 이해자</h3>
+            <span class="badge-info-tag">PROPOSED NEW STAMP</span>
+            <p class="badge-info-desc">
+              구글 아트 앤 컬처 내 약 88개의 한국 문화유산 파트너 기관을 정밀 탐색하여 로컬의 아름다운 아이덴티티와 연대기를 연결할 때 주어지는 최종 마스터 스탬프.
+              글로벌 관중의 서구 미술 편향을 환기하며, '발산형 탐색'을 '한국 예술'이라는 명확한 흐름으로 수렴하는 기획입니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Hyun's Chapter -->
+    <section id="section-hyun">
+      <div class="section-header">
+        <span class="section-tag">CHAPTER 03</span>
+        <h2 class="section-title">이현의 모험 : 직관적 비주얼과 화파 전문가</h2>
+      </div>
+
+      <div class="section-wrapper-grid" style="grid-template-columns: 0.95fr 1.05fr;">
+        <!-- Art Movement geometric box -->
+        <div class="pixel-box" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+          <div class="pixel-title">신규 스탬프 기획: &lt;화파 전문가&gt;</div>
+          <p class="chapter-desc" style="margin-bottom: 20px;">
+            이현 트레이너는 명화를 <strong>컬러 스펙트럼별로 분류</strong>하여 통일성을 선사하는 <strong>'색상 탐색기'</strong>의 단순하고 명확한 직관성에 큰 영감을 얻었습니다.
+          </p>
+          <p class="chapter-desc" style="margin-bottom: 25px;">
+            그에 착안하여, 현재 복잡하고 접근성이 다소 아쉬웠던 <strong>'화파(Art Movement) 카테고리'</strong>를 대중적이고 흥미로운 게임 퀘스트처럼 전면 노출시키는 <strong>&lt;화파 전문가&gt;</strong> 스탬프를 제안합니다. 사용자는 트렌디하고 다채로운 화풍들의 역사와 특징을 한눈에 체득할 수 있습니다.
+          </p>
+          
+          <!-- 3D Rotate Badge Card for Hyun - Integrated into Left Box -->
+          <div class="badge-3d-showcase" style="margin-top: 25px;">
+            <div class="badge-3d-card" style="width: 100%; max-width: 320px; height: 480px; padding: 30px; border-width: 3px; margin: 0 auto;">
+              <div class="badge-3d-container" style="width: 180px; height: 180px; margin-bottom: 20px; margin-top: 5px;">
+                <img class="korean-art-badge-img" src="./assets/hyun_proposal.png?v=3" alt="화파 전문가 제안 배지">
+              </div>
+              <h3 class="badge-info-name" style="font-size: 20px; margin-bottom: 8px;">화파 전문가</h3>
+              <span class="badge-info-tag" style="font-size: 8px; margin-bottom: 20px;">PROPOSED NEW STAMP</span>
+              <p class="badge-info-desc" style="font-size: 13px; line-height: 1.6; text-align: center;">
+                역사적인 화파들을 대중적인 게임 퀘스트처럼 전면 노출하여 미술사의 핵심 화풍들을 마스터하는 여정을 선사합니다.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Color Filter Interactive Module -->
+        <div class="pixel-box">
+          <div class="pixel-title">COLOR EXPLORER GALLERY</div>
+          <p class="chapter-desc" style="font-size: 14px; margin-bottom: 20px;">
+            아래의 컬러 파편 버튼을 눌러보세요. 갤러리의 수많은 화풍과 명화들이 오직 해당 시그니처 색채를 기준으로 부드럽게 필터링 및 재배치됩니다. (발산과 수렴의 탐색기 기능)
+          </p>
+
+          <div class="color-picker-container">
+            <div class="color-palette-buttons">
+              <button class="palette-btn all active" data-color="all"></button>
+              <button class="palette-btn blue" data-color="blue"></button>
+              <button class="palette-btn red" data-color="red"></button>
+              <button class="palette-btn yellow" data-color="yellow"></button>
+              <button class="palette-btn green" data-color="green"></button>
+            </div>
+
+            <!-- Filtered Gallery Grid -->
+            <div class="filtered-paintings-grid">
+              <div class="filtered-item" data-color="blue">
+                <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&auto=format&fit=crop" alt="Blue Art">
+                <div class="filtered-item-info"><span class="filtered-color-tag">BLUE</span><span class="filtered-item-title">청색의 깊은 울림</span></div>
+              </div>
+              <div class="filtered-item" data-color="red">
+                <img src="https://images.unsplash.com/photo-1580136579312-94651dfd596d?w=400&auto=format&fit=crop" alt="Red Art">
+                <div class="filtered-item-info"><span class="filtered-color-tag">RED</span><span class="filtered-item-title">열정적인 붉은 충동</span></div>
+              </div>
+              <div class="filtered-item" data-color="yellow">
+                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=400&auto=format&fit=crop" alt="Yellow Art">
+                <div class="filtered-item-info"><span class="filtered-color-tag">YELLOW</span><span class="filtered-item-title">찬란한 황금빛 태양</span></div>
+              </div>
+              <div class="filtered-item" data-color="green">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop" alt="Green Art">
+                <div class="filtered-item-info"><span class="filtered-color-tag">GREEN</span><span class="filtered-item-title">평온한 숲의 서정</span></div>
+              </div>
+              <div class="filtered-item" data-color="blue">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&auto=format&fit=crop" alt="Blue Art 2">
+                <div class="filtered-item-info"><span class="filtered-color-tag">BLUE</span><span class="filtered-item-title">코발트빛 수평선</span></div>
+              </div>
+              <div class="filtered-item" data-color="red">
+                <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=400&auto=format&fit=crop" alt="Red Art 2">
+                <div class="filtered-item-info"><span class="filtered-color-tag">RED</span><span class="filtered-item-title">코랄 빛 가을 대지</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Yeram's Chapter -->
+    <section id="section-yeram">
+      <div class="section-header">
+        <span class="section-tag">CHAPTER 04</span>
+        <h2 class="section-title">서예람의 모험 : 이야기와 마음을 잇는 감정</h2>
+      </div>
+
+      <div class="section-wrapper-grid">
+        <!-- 3D Storybook Style Panel -->
+        <div class="pixel-box">
+          <div class="pixel-title">BOOKWORM STORYTELLING</div>
+          
+          <div class="story-book-container">
+            <div class="story-book">
+              <div class="book-page left">
+                <h3 class="book-title">이야기를 여행하다</h3>
+                <p class="book-desc">
+                  서예람 트레이너는 단방향식의 딱딱한 학습을 넘어, 한 편의 흥미로운 소설 속 서사처럼 인류의 기나긴 지혜와 예술적 스토리를 자연스럽게 전달하는 <strong>'책벌레 스탬프'</strong>에 매료되었습니다.
+                  동화책을 읽듯 다정하고 따뜻하게 온라인 도서관과 박물관을 유람하는 여정은 예술이 우리 삶에 더욱 친근하게 다가오도록 돕습니다.
+                </p>
+                <div class="book-page-num">PAGE 15</div>
+              </div>
+              <div class="book-page right" style="display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; padding: 15px;">
+                <!-- 3D Rotate Badge Card for Yeram - Integrated into Storybook right page! -->
+                <div class="badge-3d-showcase">
+                  <div class="badge-3d-card" style="width: 100%; max-width: 280px; height: 450px; padding: 25px; border-width: 3px; box-shadow: 0 15px 30px rgba(0,0,0,0.6);">
+                    <div class="badge-3d-container" style="width: 160px; height: 160px; margin-bottom: 15px;">
+                      <img class="korean-art-badge-img" src="./assets/yeram_proposal.png?v=3" alt="같은 감정 배지">
+                    </div>
+                    <h3 class="badge-info-name" style="font-size: 18px; margin-bottom: 6px;">같은 감정</h3>
+                    <span class="badge-info-tag" style="font-size: 7px; margin-bottom: 15px;">PROPOSED NEW STAMP</span>
+                    <p class="badge-info-desc" style="font-size: 11px; line-height: 1.5; text-align: center;">
+                      시공간을 초월해 완전히 동일한 인간의 감정이 공유되는 작품들을 연결할 때 획득하는 배지입니다.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Same Feeling Matching Puzzle Canvas -->
+        <div class="interactive-matcher-wrapper">
+          <div class="pixel-title" style="text-align: center;">SAME FEELING MATCH ELEMENT</div>
+          <div class="matcher-instruction">
+            [미션] 왼쪽 카드를 클릭한 뒤, 초시공간을 넘어 동일한 핵심 감정(고독, 희망, 불안)을 담은 오른쪽 카드를 클릭하여 빛의 실로 연결하세요.
+          </div>
+
+          <div class="matcher-board">
+            <svg class="matcher-svg-overlay"></svg>
+            
+            <!-- Left Column: Artworks (Western / Modern) -->
+            <div class="matcher-column left">
+              <div class="matcher-item" id="left-item-lonely" data-emotion="lonely">
+                <img class="matcher-item-icon" src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=100&auto=format&fit=crop" alt="Hopper">
+                <div class="matcher-item-text">
+                  <span class="matcher-item-title">에드워드 호퍼 - 자동판매기</span>
+                  <span class="matcher-item-sub">현대 뉴욕의 쓸쓸한 고독 (USA)</span>
+                </div>
+              </div>
+              <div class="matcher-item" id="left-item-hope" data-emotion="hope">
+                <img class="matcher-item-icon" src="https://images.unsplash.com/photo-1579783928621-7a13d66a62d1?w=100&auto=format&fit=crop" alt="Van Gogh">
+                <div class="matcher-item-text">
+                  <span class="matcher-item-title">반 고흐 - 별이 빛나는 밤</span>
+                  <span class="matcher-item-sub">밤하늘 소용돌이 속 빛나는 희망 (EU)</span>
+                </div>
+              </div>
+              <div class="matcher-item" id="left-item-anxiety" data-emotion="anxiety">
+                <img class="matcher-item-icon" src="https://images.unsplash.com/photo-1580136579312-94651dfd596d?w=100&auto=format&fit=crop" alt="Munch">
+                <div class="matcher-item-text">
+                  <span class="matcher-item-title">뭉크 - 절규</span>
+                  <span class="matcher-item-sub">붉은 노을 아래 엄습하는 불안 (EU)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Artworks (Eastern / Traditional / Sculpture) -->
+            <div class="matcher-column right">
+              <div class="matcher-item" id="right-item-anxiety" data-emotion="anxiety">
+                <img class="matcher-item-icon" src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=100&auto=format&fit=crop" alt="Sculpture">
+                <div class="matcher-item-text">
+                  <span class="matcher-item-title">원시 부족 청동 안면상</span>
+                  <span class="matcher-item-sub">자연재해 앞 인간의 공포와 불안 (AF)</span>
+                </div>
+              </div>
+              <div class="matcher-item" id="right-item-lonely" data-emotion="lonely">
+                <img class="matcher-item-icon" src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=100&auto=format&fit=crop" alt="Kim Hong Do">
+                <div class="matcher-item-text">
+                  <span class="matcher-item-title">김홍도 - 독락도 (獨樂圖)</span>
+                  <span class="matcher-item-sub">산수 속 호젓하게 은둔하는 고독 (KR)</span>
+                </div>
+              </div>
+              <div class="matcher-item" id="right-item-hope" data-emotion="hope">
+                <img class="matcher-item-icon" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=100&auto=format&fit=crop" alt="Hokusai">
+                <div class="matcher-item-text">
+                  <span class="matcher-item-title">호쿠사이 - 가나가와 해변의 파도</span>
+                  <span class="matcher-item-sub">거친 파도 너머로 꿈꾸는 희망 (JP)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Ending Credits -->
+  <footer>
+    <div class="footer-retro-thanks">GAME OVER - THANK YOU!</div>
+    <div class="footer-credits">
+      <p>AI와 문화예술 제9차 과제물 단체 전시관</p>
+      <p>개발 및 기획 : 정다훈(22100661) &nbsp;|&nbsp; 이현(22408619) &nbsp;|&nbsp; 서예람(22400345)</p>
+      <p style="margin-top: 15px; font-size: 11px; opacity: 0.3;">© 2026 STAMP ADVENTURE CLASS PROJECT. POWERED BY GOOGLE DEEPMIND ANTIGRAVITY.</p>
+    </div>
+  </footer>
+
+  <script src="./index.js"></script>
+</body>
+</html>
